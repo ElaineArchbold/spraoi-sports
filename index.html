@@ -25,10 +25,10 @@
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
       <nav id="main-nav" class="main-nav" aria-label="Primary navigation">
-        <a href="#platform">Platform</a>
-        <a href="#challenge">Challenge</a>
-        <a href="#blitz">Blitz</a>
-        <a href="#customisable">Customisation</a>
+        <a class="nav-platform" href="#platform">Platform</a>
+        <a class="nav-challenge" href="#challenge">Challenge</a>
+        <a class="nav-blitz" href="#blitz">Blitz</a>
+        <a class="nav-custom" href="#customisable">Customisation</a>
         <a class="nav-cta" href="#request-info">Request more information</a>
       </nav>
     </div>
@@ -36,8 +36,14 @@
 
   <main>
     <section class="hero hero-main" id="top">
-      <div class="hero-orb hero-orb-green"></div>
-      <div class="hero-orb hero-orb-blue"></div>
+      <div class="hero-leaves" aria-hidden="true">
+        <span class="hero-leaf leaf-green"></span>
+        <span class="hero-leaf leaf-orange"></span>
+        <span class="hero-leaf leaf-sky"></span>
+        <span class="hero-leaf leaf-purple"></span>
+        <span class="hero-leaf leaf-yellow"></span>
+        <span class="hero-leaf leaf-coral"></span>
+      </div>
       <div class="container hero-grid">
         <div class="hero-copy reveal">
           <div class="status-pill"><span></span> Built for grassroots clubs</div>
