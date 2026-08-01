@@ -85,3 +85,9 @@ git push
 ```
 
 Vercel automatically redeploys after each push to the main branch.
+
+## Product screenshots
+
+The landing page now includes all supplied Fitness Challenge and Blitz/Tournament screenshots in responsive CSS phone frames. The optimised WebP files are stored in `assets/screens/`.
+
+The Fitness Challenge previews appear in the hero and the dedicated Fitness Challenge section. The Blitz/Tournament previews appear in the dedicated Blitz Manager section, alongside messaging explaining that branding, sponsors, schedules, rules and visible sections are customisable for each club.
