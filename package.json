@@ -1,0 +1,9 @@
+{
+  "name": "spraoi-sports-landing-page",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Spraoi Sports coming soon landing page",
+  "dependencies": {
+    "resend": "^6.0.0"
+  }
+}
