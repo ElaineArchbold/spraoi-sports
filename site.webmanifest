@@ -1,6 +1,10 @@
 {
   "name": "Spraoi Sports",
   "short_name": "Spraoi Sports",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0D47A1",
   "icons": [
     {
       "src": "/assets/android-chrome-192x192.png",
@@ -12,8 +16,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#0D47A1",
-  "background_color": "#FFFFFF",
-  "display": "standalone"
+  ]
 }

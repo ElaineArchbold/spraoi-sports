@@ -25,8 +25,3 @@ git add .
 git commit -m "Improve hero sections and information request form"
 git push origin main
 ```
-
-
-## Favicon
-
-The browser favicon uses the approved multicolour tree icon on a white background. The project includes ICO, PNG, Apple Touch Icon and Android icon sizes.
