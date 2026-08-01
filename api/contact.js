@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const clean = value => String(value || '').replace(/[<>]/g, '').trim();
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -8,41 +9,37 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed.' });
   }
 
-  const { name, club, email, sport = '', interest = '', message = '', website = '' } = req.body || {};
-
-  // Hidden field used to quietly reject simple spam bots.
+  const { name, club, email, sport = '', interest = 'General information', message = '', website = '' } = req.body || {};
   if (website) return res.status(200).json({ ok: true });
 
-  if (!name || !club || !email || !emailPattern.test(email)) {
-    return res.status(400).json({ error: 'Please complete your name, club and a valid email address.' });
+  if (!name || !club || !email || !message || !emailPattern.test(email)) {
+    return res.status(400).json({ error: 'Please complete your name, club, email and message.' });
   }
 
   if (!process.env.RESEND_API_KEY || !process.env.CONTACT_EMAIL || !process.env.FROM_EMAIL) {
-    return res.status(500).json({ error: 'The contact form has not been configured yet.' });
+    return res.status(500).json({ error: 'The contact form has not been configured on Vercel yet.' });
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  const safe = value => String(value).replace(/[<>]/g, '');
-
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: process.env.FROM_EMAIL,
       to: process.env.CONTACT_EMAIL,
-      replyTo: email,
-      subject: `Spraoi Sports early access — ${safe(club)}`,
+      replyTo: clean(email),
+      subject: `Spraoi Sports information request — ${clean(club)}`,
       text: [
-        `Name: ${safe(name)}`,
-        `Club: ${safe(club)}`,
-        `Email: ${safe(email)}`,
-        `Sport: ${safe(sport)}`,
-        `Main interest: ${safe(interest)}`,
+        `Name: ${clean(name)}`,
+        `Club: ${clean(club)}`,
+        `Email: ${clean(email)}`,
+        `Sport: ${clean(sport)}`,
+        `Product interest: ${clean(interest)}`,
         '',
-        safe(message)
+        clean(message)
       ].join('\n')
     });
     return res.status(200).json({ ok: true });
   } catch (error) {
-    console.error('Resend error:', error);
-    return res.status(500).json({ error: 'Your message could not be sent right now.' });
+    console.error('Contact form email error:', error);
+    return res.status(500).json({ error: 'Your request could not be sent right now. Please try again shortly.' });
   }
 }
