@@ -12,8 +12,8 @@ export default async function handler(req, res) {
   const { name, club, email, sport = '', interest = 'General information', message = '', website = '' } = req.body || {};
   if (website) return res.status(200).json({ ok: true });
 
-  if (!name || !club || !email || !message || !emailPattern.test(email)) {
-    return res.status(400).json({ error: 'Please complete your name, club, email and message.' });
+  if (!name || !club || !email || !emailPattern.test(email)) {
+    return res.status(400).json({ error: 'Please complete your name, club and a valid email address.' });
   }
 
   if (!process.env.RESEND_API_KEY || !process.env.CONTACT_EMAIL || !process.env.FROM_EMAIL) {
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
         `Sport: ${clean(sport)}`,
         `Product interest: ${clean(interest)}`,
         '',
-        clean(message)
+        clean(message) || 'Walkthrough requested via the Spraoi Sports website.'
       ].join('\n')
     });
     return res.status(200).json({ ok: true });

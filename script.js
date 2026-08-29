@@ -11,6 +11,23 @@ nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => 
   menuToggle?.setAttribute('aria-expanded', 'false');
 }));
 
+const workspaceTabs = document.querySelectorAll('.workspace-tab');
+const workspacePanels = document.querySelectorAll('.workspace-panel');
+
+workspaceTabs.forEach(tab => tab.addEventListener('click', () => {
+  const selected = tab.dataset.workspace;
+  workspaceTabs.forEach(item => {
+    const active = item === tab;
+    item.classList.toggle('active', active);
+    item.setAttribute('aria-selected', String(active));
+  });
+  workspacePanels.forEach(panel => {
+    const active = panel.dataset.panel === selected;
+    panel.classList.toggle('active', active);
+    panel.hidden = !active;
+  });
+}));
+
 const year = document.getElementById('year');
 if (year) year.textContent = String(new Date().getFullYear());
 
