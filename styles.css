@@ -16,6 +16,73 @@
 @media(max-width:420px){.container{width:min(100% - 28px,1200px)}h1{font-size:2.75rem}.phone-stage{height:430px}.phone{width:145px;height:315px}.phone-frame{border-width:4px;border-radius:24px}.trust-row{gap:9px}.hero-showcase{height:285px}.hero-phone{width:88px;height:190px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
 
+/* Screenshots already include their native device chrome. */
+.phone-speaker{display:none}
+
+/* Keep the hero focused on one coherent desktop workspace. */
+.hero-browser{width:100%;right:0;transform:rotate(.35deg)}
+
+/* Academy uses the shared Spraoi App; Cup uses its dedicated tournament app. */
+.paired-showcase{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:22px;align-items:end;padding:0}
+.paired-showcase .paired-phone{position:relative;right:auto;bottom:auto;width:190px;height:412px;transform:none;border-width:5px;border-radius:30px}
+
+@media(max-width:720px){
+  .paired-showcase{grid-template-columns:1fr;justify-items:center}
+  .paired-showcase .paired-phone{width:170px;height:369px}
+}
+
+/* A calm two-app presentation for families, without overlapping devices. */
+.mobile-showcase .phone-stage{height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,240px));justify-content:center;gap:30px;align-items:start;padding:20px 0}
+.app-preview-card{display:grid;gap:14px;justify-items:center}
+.app-preview-card>span{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(14,33,59,.08);font:800 .76rem Manrope;color:var(--navy);text-align:center}
+.app-preview-card.cup-preview>span{color:#c95d08;border-color:#ffd6ba}
+.app-preview-card.academy-preview>span{color:#2457d6;border-color:#cddaff}
+.mobile-showcase .phone-stage .phone{position:relative;inset:auto;width:240px;height:520px;transform:none}
+
+@media(max-width:720px){
+  .mobile-showcase .phone-stage{grid-template-columns:repeat(2,minmax(0,170px));gap:14px}
+  .mobile-showcase .phone-stage .phone{width:170px;height:369px}
+  .app-preview-card>span{font-size:.66rem;padding:6px 9px}
+}
+
+@media(max-width:420px){
+  .mobile-showcase .phone-stage{grid-template-columns:repeat(2,minmax(0,138px));gap:10px}
+  .mobile-showcase .phone-stage .phone{width:138px;height:300px}
+}
+
+/* Trust and buyer questions */
+.trust-section{background:#f7f9fc}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.trust-grid article{padding:26px 22px;background:#fff;border:1px solid var(--line);border-radius:20px;border-top:4px solid var(--blue);box-shadow:0 12px 30px rgba(14,33,59,.05)}
+.trust-grid article:nth-child(2){border-top-color:var(--coach)}
+.trust-grid article:nth-child(3){border-top-color:var(--connect)}
+.trust-grid article:nth-child(4){border-top-color:var(--club)}
+.trust-grid span{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#edf4ff;color:var(--blue);font:800 .72rem Manrope}
+.trust-grid h3{font-size:1.08rem;margin:22px 0 9px}
+.trust-grid p{margin:0;color:var(--muted);font-size:.85rem}
+.faq-section{background:#fff}
+.faq-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:72px;align-items:start}
+.faq-intro{position:sticky;top:120px}
+.faq-intro p{color:var(--muted);font-size:1.02rem}
+.faq-list{display:grid;gap:12px}
+.faq-list details{background:#f8faff;border:1px solid var(--line);border-radius:17px;padding:0 20px}
+.faq-list details[open]{background:#fff;box-shadow:0 12px 30px rgba(14,33,59,.07);border-color:#cbd9eb}
+.faq-list summary{cursor:pointer;list-style:none;padding:19px 36px 19px 0;font:800 .94rem Manrope;position:relative}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary:after{content:'+';position:absolute;right:0;top:14px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#eaf1fb;color:var(--blue);font:800 1.1rem Manrope}
+.faq-list details[open] summary:after{content:'–'}
+.faq-list p{margin:-3px 34px 20px 0;color:var(--muted);font-size:.88rem}
+
+@media(max-width:1080px){
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .faq-grid{grid-template-columns:1fr;gap:38px}
+  .faq-intro{position:static;text-align:center}
+}
+
+@media(max-width:720px){
+  .trust-grid{grid-template-columns:1fr}
+}
+
 /* Flagship story and interaction layer */
 .status-pill{align-items:center;gap:8px}.status-pill i{width:8px;height:8px;border-radius:50%;background:#1eb45b;box-shadow:0 0 0 5px rgba(30,180,91,.12);animation:pulse 2s infinite}@keyframes pulse{50%{box-shadow:0 0 0 9px rgba(30,180,91,0)}}
 .live-rail{position:relative;z-index:3;margin-top:52px;display:flex;align-items:center;gap:14px;padding:17px 22px;background:rgba(255,255,255,.8);border:1px solid rgba(207,220,239,.9);border-radius:18px;box-shadow:0 16px 45px rgba(14,33,59,.08);backdrop-filter:blur(12px);font:800 .76rem Manrope;text-transform:uppercase;letter-spacing:.08em;color:#496078}.live-rail i{width:6px;height:6px;border-radius:50%;background:#a8b7ca}.live-rail strong{margin-left:auto;color:var(--navy);font-size:.82rem;letter-spacing:0;text-transform:none}
