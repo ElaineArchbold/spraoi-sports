@@ -110,3 +110,13 @@ h1, h2, h3 { font-weight: 600; }
 .app-preview-card.cup-preview > span {
   color: #A64F00;
 }
+
+/* Fit the full demo captures inside their existing frames. */
+.paired-showcase .demo-phone,
+.phone-stage .demo-phone {
+  height: auto;
+}
+.demo-phone img {
+  display: block;
+  height: auto;
+}
